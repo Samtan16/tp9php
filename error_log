@@ -18,3 +18,17 @@
 [13-Nov-2022 07:26:38 UTC] PHP Warning:  Undefined array key "recipeList" in /home/samtande/public_html/tp8php/recipes.php on line 6
 [13-Nov-2022 07:26:38 UTC] PHP Warning:  Undefined array key "recipeList" in /home/samtande/public_html/tp8php/recipes.php on line 6
 [13-Nov-2022 07:26:38 UTC] PHP Warning:  Undefined array key "recipeList" in /home/samtande/public_html/tp8php/recipes.php on line 6
+[13-Nov-2022 12:27:42 UTC] PHP Warning:  Undefined array key "recipeName" in /home/samtande/public_html/tp9php/recipes.php on line 5
+[13-Nov-2022 12:27:42 UTC] PHP Warning:  Undefined array key "recipeList" in /home/samtande/public_html/tp9php/recipes.php on line 7
+[13-Nov-2022 13:16:22 UTC] PHP Warning:  Undefined array key "recipeID" in /home/samtande/public_html/tp9php/recipes.php on line 106
+[13-Nov-2022 13:16:22 UTC] PHP Warning:  Undefined array key "recipeList" in /home/samtande/public_html/tp9php/recipes.php on line 110
+[13-Nov-2022 13:16:22 UTC] PHP Warning:  Undefined array key "" in /home/samtande/public_html/tp9php/recipes.php on line 114
+[13-Nov-2022 13:16:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/samtande/public_html/tp9php/recipes.php on line 114
+[13-Nov-2022 13:16:22 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "SrequestedJSON" in /home/samtande/public_html/tp9php/recipes.php:122
+Stack trace:
+#0 {main}
+  thrown in /home/samtande/public_html/tp9php/recipes.php on line 122
+[13-Nov-2022 13:17:03 UTC] PHP Warning:  Undefined array key "recipeID" in /home/samtande/public_html/tp9php/recipes.php on line 106
+[13-Nov-2022 13:17:03 UTC] PHP Warning:  Undefined array key "recipeList" in /home/samtande/public_html/tp9php/recipes.php on line 110
+[13-Nov-2022 13:17:03 UTC] PHP Warning:  Undefined array key "" in /home/samtande/public_html/tp9php/recipes.php on line 114
+[13-Nov-2022 13:17:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/samtande/public_html/tp9php/recipes.php on line 114

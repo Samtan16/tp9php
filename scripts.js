@@ -1,12 +1,12 @@
-// JavaScript for tp7
+// JavaScript for tp9
 
 // function to load a file from the URL "fromFile" into the object indentified by "whereTo"
-function loadFileInto(recipeName, listName, whereTo) {
+function loadFileInto(recipeID, listName, whereTo) {
 
   // creating a new XMLHttpRequest object
   ajax = new XMLHttpRequest();
   
-  fromFile = "recipes.php?recipeName=" + recipeName + "&recipeList=" + listName;
+  fromFile = "recipes.php?recipeID=" + recipeID + "&recipeList=" + listName;
   
   console.log("From URL: " + fromFile);
   
@@ -14,10 +14,27 @@ function loadFileInto(recipeName, listName, whereTo) {
   ajax.open("GET", fromFile, true);
 
   // provides code to do something in response to the AJAX request
-  ajax.onreadystatechange = function() {
+  ajax.onreadystatechange = function() { 
     if ((this.readyState == 4) && (this.status == 200)) {
-      document.querySelector(whereTo).innerHTML = this.responseText;
-
+      
+      console.log("AJAX response: " + this.responseText);
+      
+      if (this.responseText !=0) {
+        responseArray = JSON.parse(this.responseText);
+        
+        responseHTML = "";
+        for (x = 0; x < responseArray.length; x++) {
+          responseHTML += "<li>" + responseArray[x] + "</li>";
+        }
+        
+        document.querySelector(whereTo).innerHTML = responseHTML;
+        
+      } else {
+        console.log("Error: no recipe or list found.");
+      }
+      
+      /* document.querySelector(whereTo).innerHTML = this.responseText; */
+      
     } else if ((this.readyState == 4) && (this.status != 200)) {
       console.log("Error: " + this.responseText);
     }
@@ -30,7 +47,7 @@ function loadFileInto(recipeName, listName, whereTo) {
 }
 
 //new recipe object
-function Recipe(recipeName, contributorName, imageURL) {
+function Recipe(recipeID, contributorName, imageURL) {
   
   this.recipeName = recipeName;
   this.contributor = contributorName;
@@ -41,9 +58,10 @@ function Recipe(recipeName, contributorName, imageURL) {
     document.querySelector("#header h1").innerHTML = this.recipeName;
     document.querySelector("#contributor").innerHTML = this.contributor;
     document.querySelector("#header").style.backgroundImage = "url(" + this.imageURL + ")";
-    loadFileInto(this.recipe, "ingredients", "#ingredients ul");
-    loadFileInto(this.recipe, "equipment", "#equipment ul");
-    loadFileInto(this.recipe, "directions", "#directions ol");
+    
+    loadFileInto(this.id, "ingredients", "#ingredients ul");
+    loadFileInto(this.id, "equipment", "#equipment ul");
+    loadFileInto(this.id, "directions", "#directions ol");
   }
  
 }
@@ -52,30 +70,24 @@ function Recipe(recipeName, contributorName, imageURL) {
     "Lemon Panko Crusted Salmon", 
     "Samuel Tan", 
     "images/salmon.jpg", 
-    "ingredients.html", 
-    "equipment.html", 
-    "directions.html"
+    "lemonPankoCrustedSalmon"
   );
 
   Tiramisu = new Recipe(
     "Classic Tiramisù", 
     "Alison Roman", 
     "https://static01.nyt.com/images/2017/04/05/dining/05COOKING-TIRAMISU1/05COOKING-TIRAMISU1-master768.jpg?w=1280&q=75", 
-    "tiramisu-ingredients.html", 
-    "tiramisu-equipment.html", 
-    "tiramisu-directions.html"
+    "tiramisu"
   );
 
   Burger = new Recipe(
     "Smashed Avocado-Chicken Burgers", 
     "Yasmin Fahr", 
     "https://static01.nyt.com/images/2022/04/18/dining/yf-chicken-avocado-burgers/merlin_205536372_0d3102af-f082-4900-bfd2-176105d53a42-articleLarge.jpg?w=1280&q=75", 
-    "burger-ingredients.html", 
-    "burger-equipment.html", 
-    "burger-directions.html"
+    "burger"
   );
  
-window.onload = function() {
+/* window.onload = function() {
 
   document.querySelector("#firstRecipe").onclick = function() {
     LemonPankoCrustedSalmon.displayRecipe();
@@ -87,6 +99,6 @@ window.onload = function() {
     Burger.displayRecipe();
   }
 
-}
+} */
 
 // end window.onload
